@@ -8,8 +8,77 @@ import streamlit as st
 st.title("AI/ML Project Portfolio")
 st.subheader("Welcome to my portfolio!")
 
+# Hamburger Menu
+menu_options = ["Home", "Projects", "About", "Contact"]
+nav_selection = st.sidebar.selectbox("Menu", menu_options)
+
 # Navigation Bar
-nav_selection = st.sidebar.radio("Navigation", ["Home", "Projects", "About", "Contact"])
+navigation_html = """
+    <style>
+        .hamburger { display: none; }
+        @media screen and (max-width: 600px) {
+            .hamburger { display: block; position: absolute; top: 10px; right: 10px; }
+            .menu { display: none; position: absolute; top: 50px; right: 10px; background-color: #f9f9f9; padding: 10px; }
+        }
+    </style>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <div class="menu" id="menu">
+        <form>
+            <select onchange="location = this.value;">
+                <option value="" disabled selected hidden>Navigation</option>
+                <option value="/">Home</option>
+                <option value="/projects">Projects</option>
+                <option value="/about">About</option>
+                <option value="/contact">Contact</option>
+            </select>
+        </form>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            menu.style.display = (menu.style.display === "block") ? "none" : "block";
+        }
+    </script>
+"""
+
+st.markdown(navigation_html, unsafe_allow_html=True)
+
+if nav_selection == "Home":
+    st.write("This is the home page.")
+    # Add content specific to the home page
+
+elif nav_selection == "Projects":
+    st.subheader("AI/ML Projects")
+
+    # Project 1
+    st.subheader("Project 1")
+    st.image("project1_image.jpg", caption="Project 1", use_column_width=True)
+    st.write("Project 1 description.")
+    st.button("View Details")
+
+    # Project 2
+    st.subheader("Project 2")
+    st.image("project2_image.jpg", caption="Project 2", use_column_width=True)
+    st.write("Project 2 description.")
+    st.button("View Details")
+
+    # Add more projects as needed
+
+elif nav_selection == "About":
+    st.subheader("About Me")
+
+    # Add information about yourself, your skills, and background
+
+elif nav_selection == "Contact":
+    st.subheader("Contact Me")
+
+    # Add contact information such as email, social media links, etc.
+
+# Footer Section
+st.markdown("---")
+st.write("© 2023 My Portfolio. All rights reserved.")
+st.write("Connect with me on [GitHub](https://github.com/your_username) | [LinkedIn](https://linkedin.com/in/your_profile)")
 
 """
 # Welcome to Streamlit!
