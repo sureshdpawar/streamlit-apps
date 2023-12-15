@@ -8,41 +8,8 @@ import streamlit as st
 st.title("AI/ML Project Portfolio")
 st.subheader("Welcome to my portfolio!")
 
-# Hamburger Menu
-menu_options = ["Home", "Projects", "About", "Contact"]
-nav_selection = st.sidebar.selectbox("Menu", menu_options)
-
 # Navigation Bar
-navigation_html = """
-    <style>
-        .hamburger { display: none; }
-        @media screen and (max-width: 600px) {
-            .hamburger { display: block; position: absolute; top: 10px; right: 10px; }
-            .menu { display: none; position: absolute; top: 50px; right: 10px; background-color: #f9f9f9; padding: 10px; }
-        }
-    </style>
-    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-    <div class="menu" id="menu">
-        <form>
-            <select onchange="location = this.value;">
-                <option value="" disabled selected hidden>Navigation</option>
-                <option value="/">Home</option>
-                <option value="/projects">Projects</option>
-                <option value="/about">About</option>
-                <option value="/contact">Contact</option>
-            </select>
-        </form>
-    </div>
-
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            menu.style.display = (menu.style.display === "block") ? "none" : "block";
-        }
-    </script>
-"""
-
-st.markdown(navigation_html, unsafe_allow_html=True)
+nav_selection = st.sidebar.radio("Navigation", ["Home", "Projects", "About", "Contact"])
 
 if nav_selection == "Home":
     st.write("This is the home page.")
