@@ -4,6 +4,13 @@ import math
 import pandas as pd
 import streamlit as st
 
+# Header Section
+st.title("AI/ML Project Portfolio")
+st.subheader("Welcome to my portfolio!")
+
+# Navigation Bar
+nav_selection = st.sidebar.radio("Navigation", ["Home", "Projects", "About", "Contact"])
+
 """
 # Welcome to Streamlit!
 
